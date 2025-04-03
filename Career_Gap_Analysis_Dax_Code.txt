@@ -7,7 +7,7 @@ DIVIDE(
     SUM('Career_Gap'[Failure Flag]), 
     COUNTROWS('Career_Gap')
 ) * 100 ;
-
+---------------------------------------------------------------------------
 Success Flag = IF('Career_Gap'[Job Offer] = "Yes", 1, 0);
 
 Success Percentage = 
@@ -15,3 +15,22 @@ DIVIDE(
     SUM('Career_Gap'[Success Flag]), 
     COUNTROWS('Career_Gap')
 ) * 100 ;
+---------------------------------------------------------------------------
+Success Count = COUNTROWS(FILTER('Career_Gap', 'Career_Gap'[Job Offer] = "Yes"))
+
+Job Offer % = 
+VAR TotalOffers = COUNTROWS('Career_Gap')
+VAR SuccessfulOffers = COUNTROWS(FILTER('Career_Gap', 'Career_Gap'[Job Offer] = "Yes"))
+RETURN DIVIDE(SuccessfulOffers, TotalOffers, 0) * 100
+
+Language_Barrier_Success_Rate = 
+DIVIDE(
+    CALCULATE(COUNT('Career_Gap'[Job Offer]), 'Career_Gap'[Job Offer] = "Yes"),
+    COUNT('Career_Gap'[Job Offer])
+) * 100
+
+------------------------------------------------------------------------------------------
+
+
+
+
