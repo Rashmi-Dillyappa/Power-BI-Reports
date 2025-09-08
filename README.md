@@ -1,4 +1,5 @@
 # Power-BI-Reports
+
 Career Gap Analysis Part 1 :DAX Code Used :
 
 Failure Flag = IF('Career_Gap'[Job Offer] = "No", 1, 0);
